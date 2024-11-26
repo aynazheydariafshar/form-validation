@@ -1,5 +1,5 @@
 import React from "react";
-import { CardTitleFormProps } from "../types/card-title-form-props";
+import { CardTitleFormProps } from "../../types/card-title-form-props";
 
 export function CardTitleForm({ title, children }: CardTitleFormProps) {
   return (

@@ -1,8 +1,8 @@
 import React from "react";
-import { DynamicInputProps } from "../types/dynamic-input-props";
+import { InputProps } from "../../types/input-props";
 import { useForm } from "react-hook-form";
 
-export function DynamicInput({ name, type, label }: DynamicInputProps) {
+export function Input({ name, type, label }: InputProps) {
   const {
     register,
     formState: { errors },

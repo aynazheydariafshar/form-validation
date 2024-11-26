@@ -1,4 +1,4 @@
-export interface DynamicInputProps {
+export interface InputProps {
   name: string;
   type: string;
   label: string;

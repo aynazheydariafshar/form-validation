@@ -1,8 +1,7 @@
-import React from "react";
-import { DynamicRadioProps } from "../types/dynamic-radio-props";
+import { RadioProps } from "../../types/radio-props";
 import { useForm } from "react-hook-form";
 
-export function DynamicRadio({ title, radioItems, name }: DynamicRadioProps) {
+export function Radio({ title, radioItems, name }: RadioProps) {
   const {
     register,
     formState: { errors },
@@ -10,7 +9,7 @@ export function DynamicRadio({ title, radioItems, name }: DynamicRadioProps) {
 
   return (
     <div className="flex items-center gap-2 text-white">
-      <h4>{title} : </h4>
+      <p>{title} : </p>
       <div className="flex flex-wrap gap-2 items-center">
         {radioItems.map(({ label, value }) => (
           <div>
