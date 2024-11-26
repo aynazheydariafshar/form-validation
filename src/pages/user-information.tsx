@@ -1,6 +1,7 @@
 import React from "react";
 import { DynamicInput } from "../components/dynamic-input";
-import DynamicRadio from "../components/dynamic-radio";
+import { DynamicRadio } from "../components/dynamic-radio";
+import { CardTitleForm } from "../components/card-title-form";
 
 const contactMethodsItems = [
   { label: "Phone Number", value: "phoneNumber" },
@@ -9,11 +10,8 @@ const contactMethodsItems = [
 
 export default function UserInformation() {
   return (
-    <div className="bg-gradient-to-r from-[#05262b] via-[#1d434a] to-[#aa56fd] h-screen p-12">
-      <h1 className="text-white text-3xl font-bold m-2">
-        User Information Form
-      </h1>
-      <div className="border rounded-md p-2 flex flex-col gap-2">
+    <div className="bg-gradient-to-r from-[#05262b] via-[#1d434a] to-[#aa56fd] min-h-screen p-20">
+      <CardTitleForm title="User Information Form">
         <div className="flex gap-2">
           <DynamicInput label="First Name" name="firstName" type="text" />
           <DynamicInput label="Last Name" name="lastName" type="text" />
@@ -30,7 +28,17 @@ export default function UserInformation() {
           <DynamicInput label="Phone Number" name="phoneNumber" type="number" />
           <DynamicInput label="Email" name="email" type="email" />
         </div>
-      </div>
+      </CardTitleForm>
+      <CardTitleForm title="Experience Section">
+        <div className="flex gap-2">
+          <DynamicInput label="Experience" name="experience" type="text" />
+          <DynamicInput
+            label="Duration(months)"
+            name="duration"
+            type="number"
+          />
+        </div>
+      </CardTitleForm>
     </div>
   );
 }
