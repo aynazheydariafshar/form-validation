@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx", // This is for React 17+ JSX transformation
+    "moduleResolution": "node", // Ensures proper module resolution
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true, // For stricter type-checking (optional but recommended)
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/**/*" // Include all files in the src folder
+  ]
+}
