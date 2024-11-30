@@ -2,11 +2,7 @@ import React from "react";
 import { InputProps } from "../../types/input-props";
 import { useForm } from "react-hook-form";
 
-export function Input({ name, type, label }: InputProps) {
-  const {
-    register,
-    formState: { errors },
-  } = useForm();
+export function Input({ name, type, label, register, errors }: InputProps) {
   return (
     <div className="p-2">
       <label className="text-white">{label}</label>
@@ -16,7 +12,9 @@ export function Input({ name, type, label }: InputProps) {
         {...register(name)}
       />
       {errors[name] && (
-        <span>{(errors[name] as { message?: string }).message}</span>
+        <span className="text-red-600 font-bold text-sm">
+          {(errors[name] as { message?: string }).message}
+        </span>
       )}{" "}
     </div>
   );

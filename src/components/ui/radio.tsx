@@ -1,12 +1,13 @@
 import { RadioProps } from "../../types/radio-props";
 import { useForm } from "react-hook-form";
 
-export function Radio({ title, radioItems, name }: RadioProps) {
-  const {
-    register,
-    formState: { errors },
-  } = useForm();
-
+export function Radio({
+  title,
+  radioItems,
+  name,
+  errors,
+  register,
+}: RadioProps) {
   return (
     <div className="flex items-center gap-2 text-white">
       <p>{title} : </p>
@@ -23,6 +24,11 @@ export function Radio({ title, radioItems, name }: RadioProps) {
             <label htmlFor={value}>{label}</label>
           </div>
         ))}
+        {errors[name] && (
+          <span className="text-red-600 font-bold text-sm">
+            {(errors[name] as { message?: string }).message}{" "}
+          </span>
+        )}
       </div>
     </div>
   );
