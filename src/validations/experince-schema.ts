@@ -3,6 +3,7 @@ import * as yup from "yup";
 const experienceSchema = yup.object().shape({
   experienceItems: yup.array().of(
     yup.object().shape({
+      id: yup.string(),
       experience: yup.string().required("Experience is required"),
       duration: yup
         .number()
@@ -10,6 +11,7 @@ const experienceSchema = yup.object().shape({
         .positive("Duration must be a positive number"),
     })
   ),
+  id: yup.string(),
   experience: yup.string().required("Experience is required"),
   duration: yup
     .number()

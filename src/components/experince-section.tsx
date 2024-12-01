@@ -24,6 +24,8 @@ const ExperinceSection = ({
     resolver: yupResolver(experienceSchema),
     defaultValues: {
       experienceItems: [],
+      experience: "",
+      duration: 0,
     },
   });
 
@@ -40,15 +42,14 @@ const ExperinceSection = ({
         duration: getValues("duration"),
       };
       append(newData);
-      console.log(data.experienceItems);
       setExperienceData([...data.experienceItems, newData]);
       setValue("experience", "");
       setValue("duration", 0);
     }
   };
 
-  const handleRemove = (index: number) => {
-    const updatedItems = fields.filter((_, i) => i !== index);
+  const handleRemove = (id: string, index: number) => {
+    const updatedItems = fields.filter((item) => item.id !== id);
     setExperienceData(updatedItems);
     remove(index);
   };
@@ -71,7 +72,7 @@ const ExperinceSection = ({
           type="number"
         />
       </div>
-      <div className="p-2">
+      <div>
         <Button onClick={handleSubmit(addExperience)} title="Add Experience">
           <CirclePlus size={18} />
         </Button>

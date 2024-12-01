@@ -18,19 +18,26 @@ export default function UserInformation() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(userInformationSchema),
     defaultValues: {
+      firstName: "",
+      lastName: "",
+      address: "",
       preferredContactMethod: "phoneNumber",
+      phoneNumber: "",
+      email: "",
     },
   });
 
   const [experienceData, setExperienceData] = useState([]);
 
   const handle = (data: any) => {
-    console.log(experienceData);
     console.log({ ...data, experienceData });
+    reset();
+    setExperienceData([]);
   };
 
   return (
@@ -85,30 +92,6 @@ export default function UserInformation() {
           />
         </div>
         <ExperinceSection setExperienceData={setExperienceData} />
-        {/* <CardTitleForm title="Experience Section">
-          <div className="flex flex-wrap gap-2 items-end">
-            <Input
-              errors={errors}
-              register={register}
-              label="Experience"
-              name="experience"
-              type="text"
-            />
-            <Input
-              errors={errors}
-              register={register}
-              label="Duration(months)"
-              name="duration"
-              type="number"
-            />
-          </div>
-          <div className="p-2">
-            <Button onClick={addExperience} title="Add Experience">
-              <CirclePlus size={18} />
-            </Button>
-          </div>
-          <ExperinceTable fields={fields} remove={remove} />
-        </CardTitleForm> */}
         <div className="flex justify-end gap-2">
           <Button onClick={handleSubmit(handle)} title="submit">
             <SendHorizontal size={18} />
