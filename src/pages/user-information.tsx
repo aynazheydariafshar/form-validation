@@ -4,10 +4,13 @@ import { Input } from "../components/ui/input";
 import { Radio } from "../components/ui/radio";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import userInformationSchema from "../validations/user-information-schema";
+import userInformationSchema, {
+  UserInformationType,
+} from "../validations/user-information-schema";
 import { CardTitleForm } from "../components/ui/card-title-form";
 import ExperinceSection from "../components/experince-section";
 import { useState } from "react";
+import { ExperinceItemType } from "../types/experince-item";
 
 const contactMethodsItems = [
   { label: "Phone Number", value: "phoneNumber" },
@@ -32,9 +35,9 @@ export default function UserInformation() {
     },
   });
 
-  const [experienceData, setExperienceData] = useState([]);
+  const [experienceData, setExperienceData] = useState<ExperinceItemType[]>([]);
 
-  const handle = (data: any) => {
+  const handle = (data: UserInformationType) => {
     console.log({ ...data, experienceData });
     reset();
     setExperienceData([]);

@@ -4,15 +4,15 @@ import { CardTitleForm } from "./ui/card-title-form";
 import { Input } from "./ui/input";
 import { ExperinceTable } from "./experince-table";
 import { useFieldArray, useForm } from "react-hook-form";
-import experienceSchema from "../validations/experince-schema";
+import experienceSchema, {
+  ExperinceType,
+} from "../validations/experince-schema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { generateUniqueId } from "../utils/generate-unique-id";
+import { ExperinceSectionPropsType } from "../types/experince-section-props";
+import { ExperinceItemType } from "../types/experince-item";
 
-const ExperinceSection = ({
-  setExperienceData,
-}: {
-  setExperienceData: any;
-}) => {
+const ExperinceSection = ({ setExperienceData }: ExperinceSectionPropsType) => {
   const {
     register,
     control,
@@ -20,7 +20,7 @@ const ExperinceSection = ({
     setValue,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<ExperinceType>({
     resolver: yupResolver(experienceSchema),
     defaultValues: {
       experienceItems: [],
@@ -34,7 +34,7 @@ const ExperinceSection = ({
     name: "experienceItems",
   });
 
-  const addExperience = (data: any) => {
+  const addExperience = (data: ExperinceType) => {
     if (getValues("experience") && getValues("duration")) {
       const newData = {
         id: generateUniqueId(),
@@ -42,7 +42,14 @@ const ExperinceSection = ({
         duration: getValues("duration"),
       };
       append(newData);
-      setExperienceData([...data.experienceItems, newData]);
+      if ((data.experienceItems?.length as number) > 0) {
+        setExperienceData([
+          ...(data.experienceItems as ExperinceItemType[]),
+          newData,
+        ]);
+      } else {
+        setExperienceData([newData]);
+      }
       setValue("experience", "");
       setValue("duration", 0);
     }

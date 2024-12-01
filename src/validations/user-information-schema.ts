@@ -1,5 +1,4 @@
 import * as yup from "yup";
-import experienceSchema from "./experince-schema";
 
 const userInformationSchema = yup.object().shape({
   firstName: yup.string().required("First name is required"),
@@ -25,5 +24,7 @@ const userInformationSchema = yup.object().shape({
     .string()
     .required("Please select a preferred contact method"),
 });
+
+export type UserInformationType = yup.InferType<typeof userInformationSchema>;
 
 export default userInformationSchema;

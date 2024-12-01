@@ -21,4 +21,6 @@ const experienceSchema = yup.object().shape({
     .min(1, "Duration must be at least 1 month"),
 });
 
+export type ExperinceType = yup.InferType<typeof experienceSchema>;
+
 export default experienceSchema;
