@@ -8,6 +8,7 @@ const experienceSchema = yup.object().shape({
       duration: yup
         .number()
         .required("Duration is required")
+        .typeError("Duration is required")
         .positive("Duration must be a positive number"),
     })
   ),
@@ -16,7 +17,8 @@ const experienceSchema = yup.object().shape({
   duration: yup
     .number()
     .required("Duration is required")
-    .min(1, "Duration must be at least 1 month"), // Ensure duration is at least 1 month
+    .typeError("Duration is required")
+    .min(1, "Duration must be at least 1 month"),
 });
 
 export default experienceSchema;
