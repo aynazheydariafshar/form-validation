@@ -19,6 +19,9 @@ export default function UserInformation() {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(userInformationSchema),
+    defaultValues: {
+      preferredContactMethod: "phoneNumber", // Default selection for contact method
+    },
   });
 
   const handle = (data: any) => {
