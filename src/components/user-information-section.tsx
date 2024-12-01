@@ -25,7 +25,6 @@ export default function UserInformationSection() {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(userInformationSchema),
@@ -41,10 +40,8 @@ export default function UserInformationSection() {
 
   const [experienceData, setExperienceData] = useState<ExperinceItemType[]>([]);
 
-  const handle = (data: UserInformationType) => {
+  const handleAddUserInformation = (data: UserInformationType) => {
     console.log({ ...data, experienceData });
-    reset();
-    setExperienceData([]);
   };
 
   return (
@@ -99,7 +96,7 @@ export default function UserInformationSection() {
       </div>
       <ExperinceSection setExperienceData={setExperienceData} />
       <div className="flex justify-end gap-2">
-        <Button onClick={handleSubmit(handle)} title="submit">
+        <Button onClick={handleSubmit(handleAddUserInformation)} title="submit">
           <SendHorizontal size={18} />
         </Button>
       </div>

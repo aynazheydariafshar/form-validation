@@ -1,7 +1,7 @@
 import { useFieldArray, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 // icons
-import { CirclePlus } from "lucide-react";
+import { CirclePlus, Trash } from "lucide-react";
 // components ui
 import { Button } from "./ui/button";
 import { CardTitleForm } from "./ui/card-title-form";
@@ -17,13 +17,16 @@ import { generateUniqueId } from "../utils/generate-unique-id";
 import { ExperinceSectionPropsType } from "../types/experince-section-props";
 import { ExperinceItemType } from "../types/experince-item";
 
-const ExperinceSection = ({ setExperienceData }: ExperinceSectionPropsType) => {
+const ExperinceSection = ({
+  setExperienceData,
+}: ExperinceSectionPropsType) => {
   const {
     register,
     control,
     getValues,
     setValue,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<ExperinceType>({
     resolver: yupResolver(experienceSchema),
@@ -47,14 +50,10 @@ const ExperinceSection = ({ setExperienceData }: ExperinceSectionPropsType) => {
         duration: getValues("duration"),
       };
       append(newData);
-      if ((data.experienceItems?.length as number) > 0) {
-        setExperienceData([
-          ...(data.experienceItems as ExperinceItemType[]),
-          newData,
-        ]);
-      } else {
-        setExperienceData([newData]);
-      }
+      setExperienceData([
+        ...(data.experienceItems as ExperinceItemType[]),
+        newData,
+      ]);
       setValue("experience", "");
       setValue("duration", 0);
     }
@@ -64,6 +63,11 @@ const ExperinceSection = ({ setExperienceData }: ExperinceSectionPropsType) => {
     const updatedItems = fields.filter((item) => item.id !== id);
     setExperienceData(updatedItems);
     remove(index);
+  };
+
+  const handleClearAllExperince = () => {
+    reset();
+    setExperienceData([]);
   };
 
   return (
@@ -90,6 +94,17 @@ const ExperinceSection = ({ setExperienceData }: ExperinceSectionPropsType) => {
         </Button>
       </div>
       <ExperinceTable fields={fields} remove={handleRemove} />
+      {fields.length > 0 && (
+        <div className="flex gap-2 mt-4">
+          <Button
+            className="bg-orange-600 hover:bg-orange-700"
+            onClick={handleClearAllExperince}
+            title="Clear All Experience"
+          >
+            <Trash size={18} />
+          </Button>
+        </div>
+      )}
     </CardTitleForm>
   );
 };
