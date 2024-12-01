@@ -1,14 +1,19 @@
+import { useFieldArray, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+// icons
 import { CirclePlus } from "lucide-react";
+// components ui
 import { Button } from "./ui/button";
 import { CardTitleForm } from "./ui/card-title-form";
 import { Input } from "./ui/input";
 import { ExperinceTable } from "./experince-table";
-import { useFieldArray, useForm } from "react-hook-form";
+// validations
 import experienceSchema, {
   ExperinceType,
 } from "../validations/experince-schema";
-import { yupResolver } from "@hookform/resolvers/yup";
+// utils
 import { generateUniqueId } from "../utils/generate-unique-id";
+// types
 import { ExperinceSectionPropsType } from "../types/experince-section-props";
 import { ExperinceItemType } from "../types/experince-item";
 

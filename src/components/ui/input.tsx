@@ -1,6 +1,5 @@
-import React from "react";
+// types
 import { InputProps } from "../../types/input-props";
-import { useForm } from "react-hook-form";
 
 export function Input({ name, type, label, register, errors }: InputProps) {
   return (

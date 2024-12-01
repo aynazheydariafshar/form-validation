@@ -1,3 +1,4 @@
+// components ui
 import { ButtonPropsType } from "../../types/button-props";
 
 export function Button({

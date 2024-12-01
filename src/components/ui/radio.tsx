@@ -1,5 +1,5 @@
+// types
 import { RadioProps } from "../../types/radio-props";
-import { useForm } from "react-hook-form";
 
 export function Radio({
   title,

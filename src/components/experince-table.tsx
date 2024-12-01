@@ -1,5 +1,8 @@
-import { Delete, DeleteIcon } from "lucide-react";
+// icons
+import { DeleteIcon } from "lucide-react";
+// components ui
 import { Button } from "./ui/button";
+// types
 import { ExperinceItemType } from "../types/experince-item";
 import { ExperinceTablePropsType } from "../types/experince-table-props";
 

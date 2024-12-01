@@ -1,8 +1,7 @@
-import React from "react";
-import UserInformation from "./pages/user-information";
+import UserForm from "./pages/user-form";
 
 function App() {
-  return <UserInformation />;
+  return <UserForm />;
 }
 
 export default App;

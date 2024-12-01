@@ -1,4 +1,4 @@
-import React from "react";
+//types
 import { CardTitleFormProps } from "../../types/card-title-form-props";
 
 export function CardTitleForm({ title, children }: CardTitleFormProps) {
