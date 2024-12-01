@@ -13,7 +13,7 @@ export function Radio({
       <p>{title} : </p>
       <div className="flex flex-wrap gap-2 items-center">
         {radioItems.map(({ label, value }) => (
-          <div>
+          <div key={value}>
             <input
               className="m-1"
               type="radio"

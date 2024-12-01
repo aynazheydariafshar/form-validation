@@ -1,4 +1,5 @@
 import * as yup from "yup";
+import experienceSchema from "./experince-schema";
 
 const userInformationSchema = yup.object().shape({
   firstName: yup.string().required("First name is required"),
